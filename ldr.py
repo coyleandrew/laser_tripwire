@@ -1,7 +1,16 @@
+'''
+This program is used in conjunction with a Raspberry Pi to create an intrusion
+detection system
+'''
+
 from gpiozero import LightSensor, Buzzer
 from time import sleep
 import smtplib
 
+'''
+The Emailer class was created using the tutorial found at
+https://www.bc-robotics.com/tutorials/sending-email-using-python-raspberry-pi/
+'''
 # Email variables
 SMTP_SERVER = 'smtp.gmail.com'
 SMTP_PORT = 587
@@ -33,7 +42,11 @@ class Emailer:
         session.sendmail(GMAIL_USERNAME, recipient,
                          headers + "\r\n\r\n" +
                          content)
-        
+
+'''
+The proceeding code was created with the help of the video:
+https://www.youtube.com/watch?v=4oJiXlPs46o&list=LLKEK8OLeA8km6pzMdrogy4w&index=6&t=440s
+'''
 # Create necessary objects
 sender = Emailer()
 ldr = LightSensor(4)
